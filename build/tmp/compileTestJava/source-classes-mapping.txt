@@ -1,0 +1,8 @@
+com/example/study/StudyApplicationTest.java
+ com.example.study.StudyApplicationTest
+com/example/study/model/entity/OrderDetailRepositoryTest.java
+ com.example.study.model.entity.OrderDetailRepositoryTest
+com/example/study/model/entity/ItemRepositoryTest.java
+ com.example.study.model.entity.ItemRepositoryTest
+com/example/study/model/entity/UserRepositoryTest.java
+ com.example.study.model.entity.UserRepositoryTest

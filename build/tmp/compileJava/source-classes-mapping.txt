@@ -1,0 +1,7 @@
+com/example/study/ifs/CrudInterface.java
+ com.example.study.ifs.CrudInterface
+com/example/study/model/network/request/UserApiRequest.java
+ com.example.study.model.network.request.UserApiRequest
+ com.example.study.model.network.request.UserApiRequest$UserApiRequestBuilder
+com/example/study/controller/api/UserApiController.java
+ com.example.study.controller.api.UserApiController
