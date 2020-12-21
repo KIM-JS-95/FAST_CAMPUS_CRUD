@@ -1,45 +1,44 @@
 package com.example.study.model.entity;
 
-
-import lombok.*;
-import lombok.experimental.Accessors;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
-@ToString(exclude = {"orderDetailList", "partner"})
+@ToString(exclude = {"itemList","category"})
 @EntityListeners(AuditingEntityListener.class)
-@Builder
-@Accessors(chain =true)
-public class Item {
+public class Partner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String status;
-
     private String name;
 
-    private String title;
+    private String status;
 
-    private String content;
+    private String address;
 
-    private BigDecimal price;
+    private String callCenter;
 
-    private String brandName;
+    private String partnerNumber;
+
+    private String businessNumber;
+
+    private String ceoName;
 
     private LocalDateTime registeredAt;
 
@@ -57,13 +56,10 @@ public class Item {
     @LastModifiedBy
     private String updatedBy;
 
-    // Item N : 1 Partner
     @ManyToOne
-    private Partner partner;
+    private Category category;
 
-
-    // Item  1 : N OrderDetail
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
-    private List<OrderDetail> orderDetailList;
-
+    // Partner 1 : N Item
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
+    private List<Item> itemList;
 }

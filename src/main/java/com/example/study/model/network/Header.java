@@ -12,19 +12,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class Header<T> {
-
     // api 통신시간
     private LocalDateTime transactionTime;
-
-
     // api 응답 코드
     private String resultCode;
-
-
     // api 부가 설명
     private String description;
-
-
     private T data;
 
     // OK
