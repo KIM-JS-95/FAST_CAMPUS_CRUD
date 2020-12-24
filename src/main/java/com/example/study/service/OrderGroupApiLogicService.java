@@ -2,6 +2,7 @@ package com.example.study.service;
 
 import com.example.study.ifs.CrudInterface;
 import com.example.study.model.entity.OrderGroup;
+import com.example.study.model.entity.User;
 import com.example.study.model.network.Header;
 import com.example.study.model.network.request.OrderGroupApiRequest;
 import com.example.study.model.network.response.OrderGroupApiResponse;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class OrderGroupApiLogicService implements CrudInterface<OrderGroupApiRequest, OrderGroupApiResponse> {
@@ -58,7 +60,13 @@ public class OrderGroupApiLogicService implements CrudInterface<OrderGroupApiReq
 
     @Override
     public Header delete(Long id) {
-        return null;
+
+        return orderGroupRepository.findById(id)
+                .map(orderGroup -> {
+                    orderGroupRepository.delete(orderGroup);
+                    return Header.OK();
+                })
+                .orElseGet(() -> Header.ERROR("No Data"));
     }
 
     private Header<OrderGroupApiResponse> response(OrderGroup orderGroup){
