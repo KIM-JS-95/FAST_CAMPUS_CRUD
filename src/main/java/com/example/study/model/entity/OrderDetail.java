@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @ToString(exclude = {"orderGroup","item"})
 @EntityListeners(AuditingEntityListener.class)
 public class OrderDetail {
